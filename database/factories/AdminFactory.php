@@ -2,15 +2,15 @@
 
 namespace Database\Factories;
 
-use App\Models\Admin;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
+use App\Models\Admin;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
  */
-class UserFactory extends Factory
+class AdminFactory extends Factory
 {
     /**
      * The current password being used by the factory.
@@ -25,13 +25,15 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
-            'identification_card_number' => '960205105673',
-            'email' => fake()->unique()->safeEmail(),
+            'id' => (string) Str::uuid(),
+            'name' => "Muhammad Azrul Naim Bin Ramli",
+            'profile_picture' => null,
+            'identification_card_number' => "960205105673",
+            'email' => "admin@admin.com",
             'email_verified_at' => now(),
-            'status' => Admin::STATUS_ACTIVE,
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
+            'status' => Admin::STATUS_ACTIVE,
         ];
     }
 

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Livewire\Login;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard');
+// Route::get('/', function () {
+//     return view('dashboard');
+// });
+
+Route::get('/', Login::class)->name('login');
+
+Route::middleware('auth:admin')->get('/dashboard', function () {
+    return view('admin.dashboard');
 });

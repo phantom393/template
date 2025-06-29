@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Login;
+use App\Livewire\CompanyManager;
 
 /*
 |--------------------------------------------------------------------------
@@ -20,6 +21,10 @@ use App\Livewire\Login;
 
 Route::get('/', Login::class)->name('login');
 
-Route::middleware('auth:admin')->get('/dashboard', function () {
-    return view('admin.dashboard');
+Route::middleware('auth:admin')->group(function () {
+    Route::get('/dashboard', function () {
+        return view('admin.dashboard');
+    })->name('admin.dashboard');
+
+    Route::get('/company', CompanyManager::class)->name('company');
 });

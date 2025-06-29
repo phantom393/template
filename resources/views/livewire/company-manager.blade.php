@@ -27,7 +27,7 @@
                                 <img src="{{ $logoFile->temporaryUrl() }}" alt="Logo Preview" class="img-thumbnail" style="max-height: 150px;">
                             @elseif ($isEditing && $logo)
                                 <img src="{{ Storage::url($logo) }}" alt="Current Logo" class="img-thumbnail" style="max-height: 150px;">
-                                <small class="text-muted">Current logo: {{ basename($logo) }}</small>
+                                <!-- <small class="text-muted">Current logo: {{ basename($logo) }}</small> -->
                             @endif
                         </div>
                         <div class="mb-3">
@@ -37,7 +37,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-primary">
+                        <button type="submit" class="btn btn-secondary btn-light-dark">
                             {{ $isEditing ? 'Update' : 'Add' }} Company
                         </button>
                     </div>
@@ -46,11 +46,15 @@
         </div>
     </div>
 
-    <div class="p-2 d-flex justify-content-end align-items-center mb-4">
-        <input type="text" wire:model.live="search" placeholder="Search" class="form-control rounded me-2" style="max-width: 250px; font-size: 12px;">
-        <button type="button" wire:click="create" class="btn btn-primary" style="font-size: 12px;">
-            Add Company
-        </button>
+    <div class="d-flex flex-wrap justify-content-end align-items-center mb-5">
+        <div class="d-flex align-items-center" style="gap: 10px;">
+            <input type="text" wire:model.live="search" placeholder="Search"
+                class="form-control form-control-sm w-200px" />
+            
+            <button type="button" wire:click="create" class="btn btn-sm btn-light-dark">
+                Add Company
+            </button>
+        </div>
     </div>
 
     <div class="card">
